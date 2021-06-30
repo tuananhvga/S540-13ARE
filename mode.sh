@@ -29,7 +29,7 @@ then
             then
                 echo "Invalid choice"
             else
-                echo ${Choice} > /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode
+                echo ${Choice} | sudo tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode
                 echo ${ConservationValues[${Choice}]}
             fi
             ;;
@@ -44,9 +44,9 @@ then
                 echo "Invalid choice"
             else
                 case "$Choice" in
-                    0) echo '\_SB.PCI0.LPC0.EC0.VPC0.DYTC 0x000FB001' > /proc/acpi/call;;
-                    1) echo '\_SB.PCI0.LPC0.EC0.VPC0.DYTC 0x0012B001' > /proc/acpi/call;;
-                    2) echo '\_SB.PCI0.LPC0.EC0.VPC0.DYTC 0x0013B001' > /proc/acpi/call;;
+                    0) echo '\_SB.PCI0.LPC0.EC0.VPC0.DYTC 0x000FB001' | sudo tee /proc/acpi/call;;
+                    1) echo '\_SB.PCI0.LPC0.EC0.VPC0.DYTC 0x0012B001' | sudo tee /proc/acpi/call;;
+                    2) echo '\_SB.PCI0.LPC0.EC0.VPC0.DYTC 0x0013B001' | sudo tee /proc/acpi/call;;
                 esac
                 echo "Set to" ${PerformanceValues[${Choice}]}
             fi
